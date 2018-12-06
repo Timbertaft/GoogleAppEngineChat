@@ -1,6 +1,21 @@
-# ZeroMQ
+# GoogleAppeEnginge Chat
 
-Once setup, acts as a simulation of both a server and related client environments.
+Once setup, acts as a simulation of both a server and related client environments using an intermediary GoogleAppEngine web service located at https://ultra-resolver-223804.appspot.com/ .
+
+In order to run the client, you will need to enter the command
+cd C:\Users\mdpoc\IdeaProjects\Computation_Engine\RMI\src\webclient\target
+java -Djava.security.policy=C:\Users\mdpoc\IdeaProjects\Computation_Engine\RMI\src\webclient\security.policy -jar Computation_Engine-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+This command insures ports have necessary permissions to operate correctly!
+
+If you haven't run the program yet: 
+
+1. Navigate to the Server folder using cmd.
+2. With Maven already installed and system variables correclty configured, type the following command: mvn appengine::update (NOTE: You should only do this if you are making changes directly to the server!
+3. Navigate to the Client folder containing the pom.xml file.
+4. Enter the command mvn clean compile assembly:single to insure the files are configured to work on your system.
+5. Enter cd C:\Users\mdpoc\IdeaProjects\Computation_Engine\RMI\src\webclient\target
+java -Djava.security.policy=C:\Users\mdpoc\IdeaProjects\Computation_Engine\RMI\src\webclient\security.policy -jar Computation_Engine-1.0-SNAPSHOT-jar-with-dependencies.jar (will need to be adjusted to correct filepath given your own personal system directories.)
 
 Offers 4 options: 
   Option 1: Computes Pi up to a number of digits inputted by the user.
@@ -8,18 +23,6 @@ Offers 4 options:
   Option 3: Opens a chat client to communicate with other clients connected to the server.
   Option 4: terminates the client.
  
- In order to use the application, RMI either needs to be manually coded in, or must use a IDE containing the RMI Plugin.
- (This requirement is due to having used the plugin to permit configuration of the simulation.  If you do not have the pluin,
- you can add it to your version of Eclipse by going to http://www.genady.net/rmi/v20/install_e42/ (for Eclipse version 4.x.x))
- 
- NOTE: Alternatively, I have modified the code so that it can work without the plugin if VM arguments are inserted.  
- (insert Djava.security.policy=file:<directory path to project>/Computation_Engine/RMI/security.policy/ -Djava.rmi.server.codebase=file:<directory path to project>/Computation_Engine/RMI/bin/ 
- into the ChatServer, ComputationEngine, and Computepi class VM arguments)
- 
- Once installed, just run the ComputationEngine as an RMI object (or just run it as normal if VM arguments are used), run the ChatServer in the same way, and then run ComputePi.  Be sure to include "localhost" in the command line arguments as well.
+Once you choose Option 3 and choose a username, details of  your client are saved to the webservice to be referenced by other users.
  
  Thank you for looking at the program.
- 
-This is complete for the basic socketing and RMI requirements of the project.
-
-This branch handles the messaging and broadcast functions by using ZeroMQ functionality through a Maven build that uses the JeroMQ library.  NOTE: There is presently an issue where the broadcast function only works properly when run in debug mode.  Still investigating the cause of this bug.
