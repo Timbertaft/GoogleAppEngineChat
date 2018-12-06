@@ -1,4 +1,4 @@
-# GoogleAppeEnginge Chat
+# GoogleAppeEngine Chat
 
 Once setup, acts as a simulation of both a server and related client environments using an intermediary GoogleAppEngine web service located at https://ultra-resolver-223804.appspot.com/ .
 
